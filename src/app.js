@@ -12,9 +12,7 @@ import './styles/styles.scss';
 const store = configureStore();
 
 
-const state= store.getState();
-const VisibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-console.log(VisibleExpenses)
+
 
 
 
