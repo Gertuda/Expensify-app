@@ -4,21 +4,21 @@ import { AddExpensePage } from "../../components/AddExpensePage";
 import expenses from "../testStore";
 
 test("should render AddExpensePage correctly", () => {
-  const addExpense = jest.fn();
+  const startAddExpense = jest.fn();
   const history = { push: jest.fn() };
   const wrapper = shallow(
-    <AddExpensePage addExpense={addExpense} history={history} />
+    <AddExpensePage addExpense={startAddExpense} history={history} />
   );
   expect(wrapper).toMatchSnapshot();
 });
 
 test("should handle onSubmit", () => {
-  const addExpense = jest.fn();
+  const startAddExpense = jest.fn();
   const history = { push: jest.fn() };
   const wrapper = shallow(
-    <AddExpensePage addExpense={addExpense} history={history} />
+    <AddExpensePage startAddExpense={startAddExpense} history={history} />
   );
   wrapper.find("ExpenseForm").prop("onSubmit")(expenses[1]);
   expect(history.push).toHaveBeenLastCalledWith("/");
-  expect(addExpense).toHaveBeenLastCalledWith(expenses[1]);
+  expect(startAddExpense).toHaveBeenLastCalledWith(expenses[1]);
 });
