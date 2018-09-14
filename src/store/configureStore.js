@@ -1,10 +1,10 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import expensesReducer from "../reducers/expenses";
-import filtersReducer from "../reducers/filters";
-import authReducer from "../reducers/auth";
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import expensesReducer from '../reducers/expenses';
+import filtersReducer from '../reducers/filters';
+import authReducer from '../reducers/auth';
 
-const composeEndhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default () => {
   const store = createStore(
@@ -13,8 +13,8 @@ export default () => {
       filters: filtersReducer,
       auth: authReducer
     }),
-    composeEndhancers(applyMiddleware(thunk))
-    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers(applyMiddleware(thunk))
   );
+
   return store;
 };
